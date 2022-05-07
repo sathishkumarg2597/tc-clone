@@ -1,0 +1,25 @@
+<div class="header p-2 d-flex align-items-center justify-content-around">
+    <div class="d-flex align-items-center header_logo">
+        <img routerLink="/" class="cursor-pointer" width="180" src="https://www.tendercuts.in/assets/logo-white.png" alt="logo" />
+        <div class="header_store d-flex align-items-center">
+            <mat-icon class="me-1" aria-hidden="false" aria-label="room icon">room</mat-icon> 
+            Thoraipakam store
+        </div>
+    </div>
+    <div class="d-flex align-items-center header_logo">
+        <!--Search-->
+        <div class="header_item cursor-pointer d-flex align-items-center" (click)="openSearch()">
+            <mat-icon class="me-2" aria-hidden="false" aria-label="search icon">search</mat-icon> 
+            <span> Search</span> 
+        </div>
+        <!--Login-->
+        <div class="header_item cursor-pointer d-flex align-items-center" (click)="openLogin()">
+            <span> Login/Sign up</span> 
+        </div>
+        <!--Cart-->
+        <div class="header_item cursor-pointer d-flex align-items-center">
+            <mat-icon class="me-2" aria-hidden="false" aria-label="shopping_cart icon">shopping_cart</mat-icon> 
+            <span> Cart</span> 
+        </div>
+    </div>
+</div>

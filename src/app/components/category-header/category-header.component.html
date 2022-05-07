@@ -1,0 +1,16 @@
+<div class="category-header d-flex align-items-center justify-content-around">
+    <div class="category-header_nav-btn" (click)="categoryList.scrollTo({ left: (categoryList.scrollLeft - 300), behavior: 'smooth' })">
+        <mat-icon aria-hidden="false" aria-label="arrow-left icon">arrow_back_ios</mat-icon>
+    </div>
+    <div #categoryList class="category-header_list d-flex">
+        <div (click)="goToCategory(item.url_key)" *ngFor="let item of categories; let i=index"
+            class="category-header_list-item cursor-pointer d-flex align-items-center justify-content-center flex-column">
+            <img [src]="item.thumb" width="27" height="27" alt="logo" />
+            <div [class]="{'active': routeCategory == item.url_key}" class="category-header_list-item_title mt-2">{{item.name}}</div>
+        </div>
+    </div>
+    <div class="category-header_nav-btn"
+        (click)="categoryList.scrollTo({ left: (categoryList.scrollLeft + 300), behavior: 'smooth' })">
+        <mat-icon  aria-hidden="false" aria-label="arrow-right icon">arrow_forward_ios</mat-icon>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+@import "../../../styles.scss";
+
+.header{
+    background-color: $primary-color;
+    height: 60px;
+    font-size: 17px;
+    color: #FFFFFF;
+    font-weight: 500;
+    &_logo{
+        gap: 5rem;
+    }
+    &_item{
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    &_item:hover{
+        background-color: rgb(173, 54, 54);
+    }
+    &_store{
+        text-transform: uppercase;
+    }
+}

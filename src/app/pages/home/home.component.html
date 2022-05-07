@@ -1,0 +1,11 @@
+<div class="home w-100 d-flex flex-column align-items-center">
+    <div class="banner w-100">
+        <app-banner></app-banner>
+    </div>
+    <div class="home_main app-width">
+        <!--Shop by Category-->
+        <app-shop-category class="mx-3"></app-shop-category>
+        <!--Top Picks-->
+        <app-product-list [products]="topPicks" class="mx-3" title="Top Picks for you" [scrollable]="true"></app-product-list>
+    </div>
+</div>

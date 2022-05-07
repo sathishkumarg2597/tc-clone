@@ -1,0 +1,11 @@
+<div class="shop-category">
+    <div class="std-heading">
+        Shop By Category
+    </div>
+    <hr/>
+    <div class="shop-category_list row">
+        <div *ngFor="let category of categories" class="col-3">
+            <app-category-card [urlKey]="category.url_key" [imgSrc]="category.image" [name]="category.name"></app-category-card>
+        </div>
+    </div>
+</div>

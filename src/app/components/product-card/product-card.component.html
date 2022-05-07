@@ -1,0 +1,16 @@
+<div class="product-card">
+    <div class="product-card_image">
+        <img [src]="product.thumb"
+            alt="product-img" />
+    </div>
+    <div class="product-card_details p-3">
+        <div class="product-card_details_title">
+           <h1>{{product.name}}</h1> 
+           <h2>{{product.short_description}}</h2> 
+        </div>
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex flex-column">{{ product.price | currency:"INR"}} <span class="mrp">MRP</span></div>
+            <div class="add-cart-btn">Add to Cart</div>
+        </div>
+    </div>
+</div>

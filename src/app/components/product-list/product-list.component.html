@@ -1,0 +1,13 @@
+<div class="product-list">
+    <div class="std-heading mb-2">
+        {{title}}
+    </div>
+    <hr />
+
+    <div [class]="{'row' : !scrollable, 'scrollable-row': scrollable}" class="product-list mt-3">
+        <div *ngFor="let product of products" class="mb-3" [class]="{'col-4' : !scrollable,'scrollable-item': scrollable}" >
+            <app-product-card [entityId]="product"></app-product-card>
+        </div>
+    </div>
+   
+</div>

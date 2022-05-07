@@ -1,0 +1,19 @@
+<mat-drawer-container class="nav-container" [hasBackdrop]="true">
+    <!-- Search Nav-->
+    <mat-drawer #searchNav position="end" [mode]="'over'">
+        <app-search-section (closeSearchNav)="searchNav.toggle()"> </app-search-section>
+    </mat-drawer>
+    <!-- Login Nav -->
+    <mat-drawer #loginNav position="start" [mode]="'over'">
+        <app-search-section (closeSearchNav)="loginNav.toggle()"> </app-search-section>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <div class="sticky-header">
+            <app-header (openSearchNav)="searchNav.toggle()" (openLoginNav)="loginNav.toggle()"></app-header>
+            <app-category-header></app-category-header>
+        </div>
+        <ng-content></ng-content>
+        <app-footer></app-footer>
+    </mat-drawer-content>
+</mat-drawer-container>

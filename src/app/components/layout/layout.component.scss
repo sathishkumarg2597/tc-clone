@@ -1,0 +1,15 @@
+@import "../../../styles.scss";
+
+.nav-container{
+    height: 100vh;
+}
+
+mat-drawer{
+    width: 30%;
+}
+
+.sticky-header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}

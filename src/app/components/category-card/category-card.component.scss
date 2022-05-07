@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+.category-card{
+    transition: all 0.5s ease;
+    &_image{
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 1px 0.3px 0.5px 0.3px lightgray;
+        img{
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    h2{
+        font-size: 18px;
+        font-weight: 600;
+        color: $primary-color;
+    }
+}
+
+.category-card:hover{
+    transform: scale(1.04);
+}
