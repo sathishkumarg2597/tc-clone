@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -31,7 +31,7 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
   }
 
   fetchData() {
-    this.categorySrv.getAllCategory().subscribe((item: any[]) => {
+    this.categorySrv.getAllCategory().pipe(map(item=>{
       let catArr: any[] = []
       let prodArr: any = {}
       item.map(cat => {
@@ -42,7 +42,9 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
         catArr.push(cat.category)
       })
       this.categorySrv.allProducts = prodArr;
-      this.categories = catArr;
+      return catArr;
+    })).subscribe((items: any[]) => {
+      this.categories = items;
     });
   }
 

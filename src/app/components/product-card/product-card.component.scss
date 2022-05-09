@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .product-card{
     background-color: white;
     border-radius: 10px;
@@ -25,7 +27,14 @@
         .mrp{
             font-size: 12px;
         }
+        &_core{
+            &_btn-container{
+                gap: 1.5rem;
+                font-weight: 500;
+            }
+        }
     }
+
 }
 
 .product-card:hover{

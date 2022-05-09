@@ -1,0 +1,16 @@
+<div class="product-details p-5">
+    <div class="product-details_header">
+        <h1 class="std-heading">
+            {{product.name}}
+        </h1>
+        <h2>{{product.short_description}}</h2>
+    </div>
+    <div class="product-details_main row">
+        <div class="product-details_main_image col-5">
+            <img [src]="product.thumb" alt="product image" />
+        </div>
+        <div class="col-7 product-details_main_details p-2">
+            <h3>{{product.desc}}</h3>
+        </div>
+    </div>
+</div>

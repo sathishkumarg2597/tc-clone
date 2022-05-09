@@ -10,6 +10,7 @@ import { CategoryCardComponent } from 'src/app/components/category-card/category
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { BannerComponent } from 'src/app/components/banner/banner.component';
 import { CategoryProductComponent } from '../category-product/category-product.component';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CategoryProductComponent } from '../category-product/category-product.c
     ProductCardComponent,
     BannerComponent,
     CategoryProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
       SharedModule,
