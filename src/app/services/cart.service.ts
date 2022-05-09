@@ -6,27 +6,29 @@ import { Subject } from "rxjs";
 })
 export class CartService{
     cartList: any[] = [];
-    cartQuantityUpdated = new Subject<number>();
+    cartUpdated = new Subject<any>();
 
     addToCart(product: any){
         let selectedProduct = this.cartList.indexOf(product)
         if(selectedProduct >= 0){
             this.cartList[selectedProduct].quantity += 1;
+            this.cartUpdated.next(this.cartList)
             return;
         }
         product.quantity = 1;
         this.cartList = [...this.cartList, product]
-        this.cartQuantityUpdated.next(this.cartList.length)
+        this.cartUpdated.next(this.cartList)
     }
 
     removeCart(product: any){
         let selectedProductIndex = this.cartList.indexOf(product)
-        if(this.cartList[selectedProductIndex].quantity > 0){
+        if(this.cartList[selectedProductIndex].quantity > 1){
             this.cartList[selectedProductIndex].quantity -= 1;
+            this.cartUpdated.next(this.cartList)
             return;
         }
-        this.cartList.slice(0, selectedProductIndex)
-        this.cartQuantityUpdated.next(this.cartList.length)
+        this.cartList.splice(selectedProductIndex, 1)
+        this.cartUpdated.next(this.cartList)
     }
 
     getQuantity(product: any){

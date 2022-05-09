@@ -1,0 +1,38 @@
+@import "../../../../styles.scss";
+
+.cart-section{
+    &_header{
+        &_heading{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+    &_product-list{
+        border-radius: 3px;
+        box-shadow: 3px 3px 7px 2px lightgray;
+        &_product{
+            border-bottom: 0.7px solid lightgray;
+        }
+        h1{
+            font-size: 16px;
+            font-weight: 500;
+        }
+        h2{
+            font-size: 16px;
+            text-align: right;
+        }
+    }
+    &_product-total{
+        h2{
+            font-size: 16px;
+            font-weight: 500;
+        }
+        span{
+            color: $primary-color;
+        }
+    }
+    &_btn-container{
+        gap: 1rem;
+        font-weight: 500;
+    }
+}

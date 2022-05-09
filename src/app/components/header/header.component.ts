@@ -9,16 +9,17 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  cartListQuabtity:number = 0;
+  cartListQuantity:number = 0;
   subscription: Subscription;
   @Output() openSearchNav = new EventEmitter<void>();
   @Output() openLoginNav = new EventEmitter<void>();
+  @Output() openCartNav = new EventEmitter<void>();
 
   constructor(private cartSrv: CartService) { }
 
   ngOnInit(): void {
-    this.subscription = this.cartSrv.cartQuantityUpdated.subscribe(quantity=>{
-      this.cartListQuabtity = quantity;
+    this.subscription = this.cartSrv.cartUpdated.subscribe(cart=>{
+      this.cartListQuantity = cart.length;
     });
   }
 
@@ -28,6 +29,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   openLogin(){
     this.openLoginNav.emit()
+  }
+
+  openCart(){
+    this.openCartNav.emit();
   }
 
   ngOnDestroy(): void {

@@ -17,9 +17,9 @@
             <span> Login/Sign up</span> 
         </div>
         <!--Cart-->
-        <div class="header_item cursor-pointer d-flex align-items-center">
+        <div class="header_item cursor-pointer d-flex align-items-center" (click)="openCart()">
             <mat-icon class="me-2" aria-hidden="false" aria-label="shopping_cart icon">shopping_cart</mat-icon> 
-            <span> Cart</span> <span *ngIf="cartListQuabtity > 0" class="header_item_badge d-flex align-items-center justify-content-center ms-2 p-2">{{cartListQuabtity}}</span>
+            <span> Cart</span> <span *ngIf="cartListQuantity > 0" class="header_item_badge d-flex align-items-center justify-content-center ms-2 p-2">{{cartListQuantity}}</span>
         </div>
     </div>
 </div>
