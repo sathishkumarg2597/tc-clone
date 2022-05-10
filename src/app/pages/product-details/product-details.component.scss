@@ -24,6 +24,18 @@
                 font-weight: 400;
                 line-height: 24px;
             }
+            &_core{
+                &_price{
+                    font-size: 18px;
+                    .mrp{
+                        font-size: 10px;
+                    }
+                }
+                &_btn-container{
+                    gap: 1.5rem;
+                    font-weight: 500;
+                }
+            }
         }
     }
 }

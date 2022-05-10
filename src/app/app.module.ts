@@ -6,14 +6,16 @@ import { SearchSectionComponent } from './components/header/search-section/searc
 import { LayoutComponent } from './components/layout/layout.component';
 import { CategoryHeaderComponent } from './components/category-header/category-header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CartSectionComponent } from './components/header/cart-section/cart-section.component';
+import { TotalPipe } from './pipes/total.pipe';
+import { CombinedReducers } from './store';
 
 //Modules
 import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CartSectionComponent } from './components/header/cart-section/cart-section.component';
-import { TotalPipe } from './pipes/total.pipe';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { TotalPipe } from './pipes/total.pipe';
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot(CombinedReducers)
   ],
   providers: [],
   bootstrap: [AppComponent]

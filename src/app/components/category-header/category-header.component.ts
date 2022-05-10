@@ -3,6 +3,7 @@ import { Router, RoutesRecognized } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 
 import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-category-header',
@@ -10,9 +11,9 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category-header.component.scss']
 })
 export class CategoryHeaderComponent implements OnInit, OnDestroy {
-  categories: any[] = []
+  categories: Category[] = []
   subscription: Subscription;
-  routeCategory: any = "Super Savers";
+  routeCategory: string = "Super Savers";
 
   constructor(private categorySrv: CategoryService, private router: Router) { }
 
@@ -32,7 +33,7 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
 
   fetchData() {
     this.categorySrv.getAllCategory().pipe(map(item=>{
-      let catArr: any[] = []
+      let catArr: Category[] = []
       let prodArr: any = {}
       item.map(cat => {
         this.categorySrv.categoryProducts[cat?.category?.url_key] = cat.products.map((product: any) => product?.entity_id)

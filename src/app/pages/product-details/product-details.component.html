@@ -10,7 +10,16 @@
             <img [src]="product.thumb" alt="product image" />
         </div>
         <div class="col-7 product-details_main_details p-2">
-            <h3>{{product.desc}}</h3>
+            <h3 [innerHTML]="product.desc"></h3>
+            <div class="d-flex align-items-center product-details_main_details_core mt-3">
+                <div class="d-flex flex-column product-details_main_details_core_price me-5">{{ product.price | currency:"INR"}}<span class="mrp">MRP</span></div>
+                <div *ngIf="quantity == 0" class="add-cart-btn" (click)="addCart($event)">Add to Cart</div>
+                <div *ngIf="quantity > 0" class="product-details_main_details_core_btn-container d-flex align-items-center justify-content-between">
+                    <button (click)="reduceQuantity($event)" class="add-cart-sub-btn">-</button>
+                        {{quantity}}
+                    <button (click)="addCart($event)" class="add-cart-sub-btn">+</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

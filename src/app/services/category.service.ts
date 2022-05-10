@@ -25,6 +25,10 @@ export class CategoryService {
     }
 
     getProductById(id: number){
+        return this.allProducts[id];
+    }
+
+    getProductDescById(id: number){
         this.http.get(`https://api.tendercuts.in/catalog/description/?store_id=1&product_id=${id}`).subscribe((item: any)=>{
             this.allProducts[id].desc = item.desc
         })
