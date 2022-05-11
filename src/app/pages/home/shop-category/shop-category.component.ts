@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { CategoryService } from 'src/app/services/category.service';
+import { AppState } from 'src/app/store';
 
 @Component({
   selector: 'app-shop-category',
@@ -10,16 +13,12 @@ export class ShopCategoryComponent implements OnInit {
 
   categories: any[] = []
 
-  constructor(private categorySrv: CategoryService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.categorySrv.getAllCategory().subscribe((item: any[]) => {
-      let catArr: any[] = []
-      item.map(cat => {
-        catArr.push(cat.category)
-      })
-      this.categories = catArr;
-    });;
+    this.store.select("category").subscribe(item=>{
+      this.categories = item.allCategories;
+    })
   }
 
 }

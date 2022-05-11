@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { AppState } from 'src/app/store';
 
 @Component({
   selector: 'app-product-card',
@@ -13,10 +15,12 @@ export class ProductCardComponent implements OnInit {
   quantity: number = 0;
   @Input() entityId: number;
 
-  constructor(private categorySrv: CategoryService, private cartSrv: CartService) { }
+  constructor(private cartSrv: CartService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.product = this.categorySrv.getProductById(this.entityId)
+    this.store.select("category").subscribe(item=>{
+      this.product = item.allProducts[this.entityId];
+    })
     this.quantity = this.cartSrv.getQuantity(this.product)
   }
 

@@ -4,6 +4,9 @@ import { map, Subscription } from 'rxjs';
 
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category.model';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store';
+import * as categoryActions from "../../store/category/category.action";
 
 @Component({
   selector: 'app-category-header',
@@ -15,7 +18,7 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   routeCategory: string = "Super Savers";
 
-  constructor(private categorySrv: CategoryService, private router: Router) { }
+  constructor(private router: Router, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.subscription = this.router.events.subscribe(val => {
@@ -32,21 +35,10 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
   }
 
   fetchData() {
-    this.categorySrv.getAllCategory().pipe(map(item=>{
-      let catArr: Category[] = []
-      let prodArr: any = {}
-      item.map(cat => {
-        this.categorySrv.categoryProducts[cat?.category?.url_key] = cat.products.map((product: any) => product?.entity_id)
-        cat.products.map((product: any) => {
-          prodArr[product?.entity_id] = product
-        })
-        catArr.push(cat.category)
-      })
-      this.categorySrv.allProducts = prodArr;
-      return catArr;
-    })).subscribe((items: any[]) => {
-      this.categories = items;
-    });
+    this.store.dispatch(new categoryActions.getAllCategory());
+    this.store.select("category").subscribe(item=>{
+      this.categories = item.allCategories;
+    })
   }
 
   goToCategory(categoryName: string) {

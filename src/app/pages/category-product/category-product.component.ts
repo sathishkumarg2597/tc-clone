@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
 import { CategoryService } from 'src/app/services/category.service';
+import { AppState } from 'src/app/store';
 
 @Component({
   selector: 'app-category-product',
@@ -14,7 +17,7 @@ export class CategoryProductComponent implements OnInit,OnDestroy {
   products: any[] = [];
   subscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private categorySrv: CategoryService) { }
+  constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.fetchProducts();
@@ -26,9 +29,10 @@ export class CategoryProductComponent implements OnInit,OnDestroy {
 
   fetchProducts(){
     this.subscription = this.route.params.subscribe(params=>{
-      let selectedCategory = this.categorySrv.getCategoryByUrlKey(params['category'])
-      this.categoryName = selectedCategory.name;
-      this.products = this.categorySrv.categoryProducts[params['category']];
+      this.store.select("category").subscribe(item=>{
+        this.categoryName = item.categoryDetails[params['category']].name;
+        this.products = item.categoryProducts[params['category']];
+      })
     });
   }
 

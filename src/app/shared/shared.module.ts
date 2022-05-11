@@ -5,6 +5,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform
 //Mat Modules
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from "@angular/common";
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CommonModule } from "@angular/common";
         MatSidenavModule,
         MatIconModule,
         CommonModule,
+        MatProgressSpinnerModule,
     ],
     exports:[
         MatIconModule,
@@ -25,6 +27,7 @@ import { CommonModule } from "@angular/common";
         BrowserModule,
         BrowserAnimationsModule,
         CommonModule,
+        MatProgressSpinnerModule,
     ]
 })
 export class SharedModule{}
