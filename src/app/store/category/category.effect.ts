@@ -23,7 +23,7 @@ export class CategoryEffect{
                 categoryDetails[item?.category?.url_key] = item.category;
                 categoryProducts[item?.category?.url_key] = item.products.map((product: any) => product?.entity_id)
                     item.products.map((product: any) => {
-                      prodArr[product?.entity_id] = product
+                      prodArr[product?.entity_id] = {...product, quantity: 0}
                     })
             })
             new categoryActions.setLoading(true);

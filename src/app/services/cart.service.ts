@@ -9,19 +9,19 @@ export class CartService{
     cartUpdated = new Subject<any>();
 
     addToCart(product: any){
-        let selectedProduct = this.cartList.indexOf(product)
+        let selectedProduct = this.cartList.findIndex(item => product.entity_id ==  item.entity_id)
         if(selectedProduct >= 0){
             this.cartList[selectedProduct].quantity += 1;
             this.cartUpdated.next(this.cartList)
             return;
         }
-        product.quantity = 1;
+        product = {...product, quantity: 1};
         this.cartList = [...this.cartList, product]
         this.cartUpdated.next(this.cartList)
     }
 
     removeCart(product: any){
-        let selectedProductIndex = this.cartList.indexOf(product)
+        let selectedProductIndex = this.cartList.findIndex(item => product.entity_id ==  item.entity_id)
         if(this.cartList[selectedProductIndex].quantity > 1){
             this.cartList[selectedProductIndex].quantity -= 1;
             this.cartUpdated.next(this.cartList)

@@ -40,5 +40,4 @@ export class ProductDetailsComponent implements OnInit {
     this.cartSrv.removeCart(this.product);
     this.quantity = this.cartSrv.getQuantity(this.product)
   }
-
 }

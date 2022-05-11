@@ -10,6 +10,7 @@ import { CartSectionComponent } from './components/header/cart-section/cart-sect
 import { TotalPipe } from './pipes/total.pipe';
 import { CombinedReducers } from './store';
 import { CategoryEffect } from './store/category/category.effect';
+import { environment } from 'src/environments/environment';
 
 //Modules
 import { HomeModule } from './pages/home/home.module';
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,11 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     StoreModule.forRoot(CombinedReducers),
     EffectsModule.forRoot([CategoryEffect]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+      autoPause: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,3 @@
-import { Category } from "src/app/models/category.model";
 import * as categoryAction from "./category.action";
 
 export interface CategoryState{
