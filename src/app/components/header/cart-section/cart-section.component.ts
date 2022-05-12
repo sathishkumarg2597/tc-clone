@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -13,7 +14,7 @@ export class CartSectionComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private cartSrv: CartService) { }
+  constructor(private cartSrv: CartService, private router: Router) { }
 
   cartList: any[] = [];
 
@@ -21,6 +22,11 @@ export class CartSectionComponent implements OnInit, OnDestroy {
     this.subscription = this.cartSrv.cartUpdated.subscribe(item=>{
       this.cartList = item
     })
+  }
+
+  goToCheckout(){
+    this.router.navigate(["/checkout"]);
+    this.closeNav();
   }
 
   closeNav(){

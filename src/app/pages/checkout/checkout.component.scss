@@ -1,0 +1,14 @@
+@import "../../../styles.scss";
+
+.checkout{
+    ::ng-deep .mat-step-icon{
+        background-color: $primary-color !important;
+    } 
+    ::ng-deep .mat-step-header{
+        box-shadow: 0px 1px 10px 1px;
+    } 
+    ::ng-deep .mat-stepper-horizontal-line {
+        border-top-style: dashed !important ;
+        margin: 0 14px !important;
+    }
+}

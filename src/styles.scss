@@ -70,6 +70,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .add-cart-btn:hover{
     color: rgb(227, 225, 225);
 }
+.add-cart-btn:disabled{
+    opacity: 0.7;
+    color: rgb(227, 225, 225);
+}
 
 .add-cart-sub-btn{
     display: flex;

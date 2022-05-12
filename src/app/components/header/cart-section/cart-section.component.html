@@ -27,7 +27,7 @@
                 </h2>
             </div>
             <div class="col-6">
-                <button class="add-cart-btn w-100">Checkout</button>
+                <button [disabled]="cartList.length == 0" (click)="goToCheckout()" class="add-cart-btn w-100">Checkout</button>
             </div>
         </div>
     </div>

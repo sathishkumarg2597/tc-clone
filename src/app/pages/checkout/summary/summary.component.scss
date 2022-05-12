@@ -1,0 +1,13 @@
+.summary{
+    &_card{
+        &_header{
+            display: flex;
+            width: 100;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-size: 14px;
+            }
+        }
+    }
+}
