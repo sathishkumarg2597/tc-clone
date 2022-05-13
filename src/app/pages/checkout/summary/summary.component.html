@@ -1,15 +1,65 @@
-<div class="summary p-5">
-    <div class="row">
-        <div class="col-lg-7 col-md-7 col-sm-12">
-            <div class="summary_card">
-                <div class="summary_card_header">
+<div class="summary">
+    <div class="row mt-4">
+        <!-- Left section -->
+        <div class="col-lg-5 col-md-12 col-sm-12 bg p-3 me-5 mb-3">
+            <div class="summary_card bg p-3">
+                <div class="summary_card_header mb-4">
                     <h1>Available Today</h1>
                 </div>
-                <div class="summary_card_item">
-
+                <div *ngFor="let item of cartList" class="summary_card_item d-flex align-items-center">
+                    <img [src]="item?.thumb" alt="cart-item" />
+                    <div class="d-flex flex-column">
+                        <h1>
+                            {{item?.name}}
+                        </h1>
+                        <h2>
+                            Weight 2 gms
+                        </h2>
+                    </div>
+                    <div class="price">{{ item?.price * item?.quantity | currency: "INR"}}</div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-12"></div>
+        <div class="col-lg-6 col-md-12 col-sm-12 bg">
+            <div class="summary_card p-3">
+                <div class="summary_card_header mb-4">
+                    <h1>Address</h1>
+                </div>
+                <form [formGroup]="addressForm">
+                    <div class="mb-3">
+                        <label  class="form-label">Door/Apt N.o</label>
+                        <input formControlName="doorNo" type="name" class="form-control" placeholder="321">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Street</label>
+                        <input formControlName="street" type="name" class="form-control" placeholder="4th Street">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+                        <input formControlName="city" type="name" class="form-control" placeholder="CBE">
+                    </div>
+                    <div class="row mb-3 justify-content-between g-0">
+                        <div class="col-6">
+                            <label class="form-label">State</label>
+                            <input formControlName="state" type="name" class="form-control" placeholder="TN">
+                        </div>
+                        <div class="col-5">
+                            <label class="form-label">Country</label>
+                            <input formControlName="country" type="name" class="form-control"  placeholder="IND">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                            <div class="btn btn-warning mb-2" (click)="addPhoneNumber()">+</div>
+                            <div class="mb-3" *ngFor="let number of addressForm.value.phone; let i = index;" [formGroup]="number">
+                                <label class="form-label">Phone Number - {{i+1}} <span class="ms-2 cursor-pointer" (click)="removeNumber(i)" style="color: red; font-family: 12px;">Remove</span></label>
+                                <input formControlName="number" type="number" class="form-control" placeholder="1234567890">
+                            </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end w-100">
+                        <button (click)="onSubmit()" [disabled]="!addressForm.valid"  class="btn btn-primary">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

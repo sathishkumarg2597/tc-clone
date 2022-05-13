@@ -1,6 +1,12 @@
 @import "../../../styles.scss";
 
 .checkout{
+    .checkout-width{
+        width: 90%;
+    }
+    ::ng-deep .mat-stepper-horizontal{
+        background-color: transparent !important;
+    }
     ::ng-deep .mat-step-icon{
         background-color: $primary-color !important;
     } 
