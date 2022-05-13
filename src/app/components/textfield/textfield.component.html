@@ -1,0 +1,7 @@
+<div class="textfield" [formGroup]="fGroup" class="mb-3">
+    <label  class="form-label">{{label}}</label>
+    <input [formControlName]="fCName" [type]="type" class="form-control" [placeholder]="placeholder">
+    <div *ngIf="!fGroup.get(fCName)?.valid && fGroup.get(fCName)?.dirty" class="error mt-2">
+        {{ fGroup.get(fCName)?.errors | error: label}}
+    </div>
+</div>

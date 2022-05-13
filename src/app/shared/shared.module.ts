@@ -9,9 +9,13 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
+import { TextFieldComponent } from "../components/textfield/textfield.component";
+import { ErrorPipe } from "../pipes/error.pipe";
 
 @NgModule({
     declarations:[
+        TextFieldComponent,
+        ErrorPipe,
     ],
     imports:[
         BrowserModule,
@@ -34,6 +38,8 @@ import { MatStepperModule } from '@angular/material/stepper';
         MatProgressSpinnerModule,
         MatStepperModule,
         ReactiveFormsModule,
+        TextFieldComponent,
+        ErrorPipe,
     ]
 })
 export class SharedModule{}

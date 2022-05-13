@@ -19,7 +19,7 @@ export class SummaryComponent implements OnInit, OnDestroy{
     ngOnInit(): void {
         this.setCartData();
         this.addressForm = new FormGroup({
-            doorNo: new FormControl("", Validators.required),
+            doorNo: new FormControl("", [Validators.required]),
             street: new FormControl("", Validators.required),
             city: new FormControl("", Validators.required),
             state: new FormControl("", Validators.required),
@@ -47,7 +47,7 @@ export class SummaryComponent implements OnInit, OnDestroy{
     }
 
     onSubmit(){
-        console.log(this.addressForm.value)
+        console.log(this.addressForm)
     }
 
     ngOnDestroy(): void {
