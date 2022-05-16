@@ -12,6 +12,9 @@ export class ErrorPipe implements PipeTransform {
         case 'required':
           errorMessage = `${fieldName} is required`;
           break;
+        case 'invaliddno':
+          errorMessage = "Invalid Door/Apt Number"
+          break;
       }
     })
     return errorMessage;

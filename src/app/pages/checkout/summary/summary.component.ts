@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { CartService } from "src/app/services/cart.service";
 
@@ -8,45 +8,49 @@ import { CartService } from "src/app/services/cart.service";
     templateUrl: "./summary.component.html",
     styleUrls: ["./summary.component.scss"],
 })
-export class SummaryComponent implements OnInit, OnDestroy{
+export class SummaryComponent implements OnInit, OnDestroy {
     cartList: any[] = [];
-    subscription: Subscription
-
-    constructor(private cartSrv: CartService){}
-
+    subscription: Subscription;
     addressForm: FormGroup;
+
+    constructor(private cartSrv: CartService) { }
+
 
     ngOnInit(): void {
         this.setCartData();
         this.addressForm = new FormGroup({
-            doorNo: new FormControl("", [Validators.required]),
+            doorNo: new FormControl("", [Validators.required, this.checkIsDoorNumber]),
             street: new FormControl("", Validators.required),
             city: new FormControl("", Validators.required),
             state: new FormControl("", Validators.required),
-            country: new FormControl("", Validators.required),
+            country: new FormControl("", [Validators.required]),
             phone: new FormArray([])
         })
     }
 
-    removeNumber(index: number){
+    checkIsDoorNumber(control: AbstractControl){
+        return control?.value.length > 4 ? { invalidDno: true } : null;
+    }
+
+    removeNumber(index: number) {
         this.addressForm.value.phone.splice(index, 1);
     }
 
-    addPhoneNumber(){
+    addPhoneNumber() {
         let newNumber = new FormGroup({
             number: new FormControl("", Validators.required)
         })
         this.addressForm.value.phone.push(newNumber)
     }
 
-    setCartData(){
+    setCartData() {
         this.cartList = this.cartSrv.cartList;
-        this.subscription = this.cartSrv.cartUpdated.subscribe(item=>{
+        this.subscription = this.cartSrv.cartUpdated.subscribe(item => {
             this.cartList = item
         })
     }
 
-    onSubmit(){
+    onSubmit() {
         console.log(this.addressForm)
     }
 

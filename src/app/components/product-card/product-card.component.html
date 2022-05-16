@@ -1,21 +1,36 @@
 <div [routerLink]="[entityId]" class="product-card">
-    <div class="product-card_image">
-        <img [src]="product.thumb"
-            alt="product-img" />
+  <div class="product-card_image">
+    <img [src]="product.thumb" alt="product-img" />
+  </div>
+  <div class="product-card_details p-3">
+    <div class="product-card_details_title">
+      <h1>{{ product.name }}</h1>
+      <h2>{{ product.short_description }}</h2>
     </div>
-    <div class="product-card_details p-3">
-        <div class="product-card_details_title">
-           <h1>{{product.name}}</h1> 
-           <h2>{{product.short_description}}</h2> 
+    <div
+      class="d-flex align-items-center justify-content-between product-card_details_core mt-3"
+    >
+      <div class="d-flex flex-column">
+        {{ product.price | currency: "INR" }} <span class="mrp">MRP</span>
+      </div>
+      <div
+        *ngIf="quantity == 0; else productDetails"
+        class="add-cart-btn"
+        (click)="addCart($event)"
+      >
+        Add to Cart
+      </div>
+      <ng-template #productDetails>
+        <div
+          class="product-card_details_core_btn-container d-flex align-items-center justify-content-between"
+        >
+          <button (click)="reduceQuantity($event)" class="add-cart-sub-btn">
+            -
+          </button>
+          {{ quantity }}
+          <button (click)="addCart($event)" class="add-cart-sub-btn">+</button>
         </div>
-        <div class="d-flex align-items-center justify-content-between product-card_details_core mt-3">
-            <div class="d-flex flex-column">{{ product.price | currency:"INR"}} <span class="mrp">MRP</span></div>
-            <div *ngIf="quantity == 0" class="add-cart-btn" (click)="addCart($event)">Add to Cart</div>
-            <div *ngIf="quantity > 0" class="product-card_details_core_btn-container d-flex align-items-center justify-content-between">
-                <button (click)="reduceQuantity($event)" class="add-cart-sub-btn">-</button>
-                    {{quantity}}
-                <button (click)="addCart($event)" class="add-cart-sub-btn">+</button>
-            </div>
-        </div>
+      </ng-template>
     </div>
+  </div>
 </div>

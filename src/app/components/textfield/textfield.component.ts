@@ -13,6 +13,9 @@ export class TextFieldComponent implements OnInit{
     @Input() type: string
     @Input() placeholder: string
 
+    get isError(){
+        return !this.fGroup.get(this.fCName)?.valid && this.fGroup.get(this.fCName)?.dirty;
+    }
     constructor(){ }
 
     ngOnInit(): void {
