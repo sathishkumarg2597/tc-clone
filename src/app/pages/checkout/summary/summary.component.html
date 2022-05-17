@@ -9,7 +9,7 @@
                 <div *ngFor="let item of cartList" class="summary_card_item d-flex align-items-center">
                     <img [src]="item?.thumb" alt="cart-item" />
                     <div class="d-flex flex-column">
-                        <h1>
+                        <h1 id="name">
                             {{item?.name}}
                         </h1>
                         <h2>

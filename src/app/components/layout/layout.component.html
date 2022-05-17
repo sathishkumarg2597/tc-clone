@@ -5,7 +5,7 @@
     </mat-drawer> -->
     <!-- Login Nav -->
     <mat-drawer #loginNav position="start" [mode]="'over'">
-        <app-search-section (closeSearchNav)="loginNav.toggle()"> </app-search-section>
+        <app-login-section (closeLoginNav)="loginNav.toggle()"> </app-login-section>
     </mat-drawer>
     <!-- Cart Nav -->
     <mat-drawer #cartNav position="end" [mode]="'over'">

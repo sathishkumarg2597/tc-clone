@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LoginSectionComponent } from './components/header/login-section/login-section.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LayoutComponent,
     FooterComponent,
     CartSectionComponent,
+    LoginSectionComponent,
     TotalPipe,
   ],
   imports: [
